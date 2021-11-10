@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:plugin/plugins/sun_rise_set_plugin.dart';
 
@@ -40,12 +42,47 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            LocationPlugin(),
-            SunRiseSetPlugin(),
-            DatePlugin(selectedDate),
+            Container(
+                height: 300,
+                width: 700,
+                color: Colors.lightBlue,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('10:06', style: TextStyle(fontSize: 95)),
+                  ],
+                )),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  color: Colors.lightBlue[500],
+                  child: Text('Sunrise:', style: TextStyle(fontSize: 60)),
+                ),
+                Text('7:12', style: TextStyle(fontSize: 60)),
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  color: Colors.blue,
+                  child: Text('Sunset:', style: TextStyle(fontSize: 60)),
+                ),
+                Text('17:18', style: TextStyle(fontSize: 60)),
+              ],
+            ),
+            Text('Total day time', style: TextStyle(fontSize: 40)),
+            Text('10:06', style: TextStyle(fontSize: 50)),
           ],
         ),
       ),
