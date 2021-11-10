@@ -109,6 +109,8 @@ List<dynamic> run() {
   print('colZ: $str_colZ');
 
   double colAA = 8 * colW;
+  String str_colAA = '$colAA';
+  result.add(str_colAA);
   print('colAA: $colAA');
 
   double colAB = (colE * 1440 + colV + 4 * colB4 - 60 * colB5) % 1440;

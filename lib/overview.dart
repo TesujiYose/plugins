@@ -1,11 +1,13 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:plugin/plugins/sun_rise_set_plugin.dart';
 
 import 'plugins/date_plugin.dart';
 import 'plugins/location_plugin.dart';
 import 'calculator/sun_rise_set.dart';
+import 'calculator/helper.dart';
 
 class Overview extends StatelessWidget {
   const Overview({Key? key}) : super(key: key);
@@ -36,6 +38,8 @@ class _MyHomePageState extends State<MyHomePage> {
   DateTime selectedDate = DateTime.now();
   @override
   Widget build(BuildContext context) {
+    DateTime current = Helper.getCurrentTime();
+    List<dynamic> cont = Helper.getSunriseSunsetTime();
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -52,7 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('10:06', style: TextStyle(fontSize: 95)),
+                    Text('${DateFormat('HH:mm:ss').format(current)}',
+                        style: TextStyle(fontSize: 95)),
                   ],
                 )),
             SizedBox(
@@ -65,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.lightBlue[500],
                   child: Text('Sunrise:', style: TextStyle(fontSize: 60)),
                 ),
-                Text('7:12', style: TextStyle(fontSize: 60)),
+                Text('${cont[0]}', style: TextStyle(fontSize: 40)),
               ],
             ),
             SizedBox(
@@ -78,11 +83,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.blue,
                   child: Text('Sunset:', style: TextStyle(fontSize: 60)),
                 ),
-                Text('17:18', style: TextStyle(fontSize: 60)),
+                Text(' ${cont[1]}', style: TextStyle(fontSize: 40)),
               ],
             ),
             Text('Total day time', style: TextStyle(fontSize: 40)),
-            Text('10:06', style: TextStyle(fontSize: 50)),
+            Text('${cont[2]}', style: TextStyle(fontSize: 30)),
           ],
         ),
       ),
